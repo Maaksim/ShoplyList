@@ -10,8 +10,14 @@ import SwiftUI
 
 @Observable
 final class AppCoordinator {
-    let tabBarCoordinator = TabBarCoordinator()
-    let authService = AuthService()
+    let authService: AuthService
+    let tabBarCoordinator: TabBarCoordinator
+
+    init() {
+        let authService = AuthService()
+        self.authService = authService
+        self.tabBarCoordinator = TabBarCoordinator(authService: authService)
+    }
 
     @MainActor
     var rootView: some View {
