@@ -11,7 +11,16 @@ import SwiftUI
 @Observable
 final class AppCoordinator {
     let tabBarCoordinator = TabBarCoordinator()
-    
-    init() {
+    let authService = AuthService()
+
+    @MainActor
+    var rootView: some View {
+        Group {
+            if authService.isAuthenticated {
+                tabBarCoordinator.rootView
+            } else {
+                AuthAssembly().make(authService: authService)
+            }
+        }
     }
 }
