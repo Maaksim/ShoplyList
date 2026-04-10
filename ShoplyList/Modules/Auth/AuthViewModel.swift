@@ -23,8 +23,9 @@ final class AuthViewModel {
     var email: String = ""
     var password: String = ""
     var confirmPassword: String = ""
+    var errorMessage: String?
+
     private(set) var isLoading: Bool = false
-    private(set) var errorMessage: String?
 
     private var currentNonce: String?
     private let authService: AuthService

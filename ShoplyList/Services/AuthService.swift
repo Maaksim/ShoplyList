@@ -28,7 +28,7 @@ final class AuthService {
         }
     }
 
-    deinit {
+    isolated deinit {
         if let handle = listenerHandle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
