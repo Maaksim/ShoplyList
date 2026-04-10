@@ -103,4 +103,22 @@ enum LocalizationConstants {
         static let lists = "Lists"
         static let profile = "Profile"
     }
+
+    // MARK: - Auth Screen
+    enum Auth {
+        static let signInTitle = "Welcome Back"
+        static let signUpTitle = "Create Account"
+        static let signInSubtitle = "Sign in to your account"
+        static let signUpSubtitle = "Start organizing your lists"
+        static let emailPlaceholder = "Email address"
+        static let passwordPlaceholder = "Password"
+        static let confirmPasswordPlaceholder = "Confirm password"
+        static let signInButton = "Sign In"
+        static let signUpButton = "Create Account"
+        static let toggleToSignUp = "Don't have an account? Sign Up"
+        static let toggleToSignIn = "Already have an account? Sign In"
+        static let orDivider = "or"
+        static let passwordMismatch = "Passwords do not match"
+        static let passwordTooShort = "Password must be at least 8 characters"
+    }
 }

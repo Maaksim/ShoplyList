@@ -21,13 +21,9 @@ struct ShoplyListApp: App {
     @State var appCoordinator = AppCoordinator()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-    private var tabBarCoordinator: TabBarCoordinator {
-        appCoordinator.tabBarCoordinator
-    }
-
     var body: some Scene {
         WindowGroup {
-            tabBarCoordinator.rootView
+            appCoordinator.rootView
         }
     }
 }
