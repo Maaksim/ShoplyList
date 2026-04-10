@@ -27,6 +27,7 @@ final class TabBarCoordinator: CompositionCoordinator {
     }
 
     @MainActor
+    @ViewBuilder
     func tabView(for tab: TabItem) -> some View {
         switch tab {
         case .listsTab:

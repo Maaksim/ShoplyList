@@ -7,12 +7,13 @@
 //
 
 import Observation
+import FirebaseAuth
 
 @Observable
 @MainActor
 final class ProfileViewModel {
     private(set) var isSigningOut = false
-    private(set) var errorMessage: String?
+    var errorMessage: String?
     var showSignOutConfirmation = false
 
     var userEmail: String {
