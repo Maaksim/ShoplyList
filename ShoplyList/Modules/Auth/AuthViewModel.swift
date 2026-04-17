@@ -41,6 +41,7 @@ final class AuthViewModel {
         if mode == .signUp {
             return password == confirmPassword
         }
+
         return true
     }
 
@@ -60,8 +61,10 @@ final class AuthViewModel {
             }
             return
         }
+
         isLoading = true
         errorMessage = nil
+
         do {
             if mode == .signIn {
                 try await authService.signIn(email: email, password: password)
@@ -71,6 +74,7 @@ final class AuthViewModel {
         } catch {
             errorMessage = error.localizedDescription
         }
+
         isLoading = false
     }
 
@@ -102,7 +106,6 @@ final class AuthViewModel {
     }
 
     // MARK: - Nonce helpers
-
     private func randomNonceString(length: Int = 32) -> String {
         var randomBytes = [UInt8](repeating: 0, count: length)
         _ = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)

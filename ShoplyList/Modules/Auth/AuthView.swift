@@ -23,9 +23,7 @@ struct AuthView: View {
                 VStack(spacing: 32) {
                     logoView
                     formView
-                    if let error = viewModel.errorMessage {
-                        errorView(error)
-                    }
+                    errorView
                     primaryButton
                     orDivider
                     appleSignInButton
@@ -108,10 +106,12 @@ extension AuthView {
     }
 
     private var emailField: some View {
-        TextField(LocalizationConstants.Auth.emailPlaceholder, text: $viewModel.email)
+        TextField("", text: $viewModel.email,
+                  prompt: placeholderLabel(LocalizationConstants.Auth.emailPlaceholder))
             .keyboardType(.emailAddress)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
+            .foregroundStyle(.textPrimary)
             .padding(14)
             .background(
                 RoundedRectangle(cornerRadius: 12)
@@ -126,8 +126,10 @@ extension AuthView {
     }
 
     private var passwordField: some View {
-        SecureField(LocalizationConstants.Auth.passwordPlaceholder, text: $viewModel.password)
+        SecureField("", text: $viewModel.password,
+                    prompt: placeholderLabel(LocalizationConstants.Auth.passwordPlaceholder))
             .padding(14)
+            .foregroundStyle(.textPrimary)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(.cardBackground))
@@ -141,8 +143,10 @@ extension AuthView {
     }
 
     private var confirmPasswordField: some View {
-        SecureField(LocalizationConstants.Auth.confirmPasswordPlaceholder, text: $viewModel.confirmPassword)
+        SecureField("", text: $viewModel.confirmPassword,
+                    prompt: placeholderLabel(LocalizationConstants.Auth.confirmPasswordPlaceholder))
             .padding(14)
+            .foregroundStyle(.textPrimary)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(.cardBackground))
@@ -155,13 +159,21 @@ extension AuthView {
             .disabled(viewModel.isLoading)
     }
 
+    private func placeholderLabel(_ text: String) -> Text {
+        Text(text)
+            .foregroundColor(.textSecondary)
+    }
+
     // MARK: - Error
-    private func errorView(_ message: String) -> some View {
-        Text(message)
-            .font(.system(size: 13, weight: .medium))
-            .foregroundStyle(.red)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, 4)
+    @ViewBuilder
+    private var errorView: some View {
+        if let message = viewModel.errorMessage {
+            Text(message)
+                .font(.system(size: 13, weight: .medium))
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 4)
+        }
     }
 
     // MARK: - Primary Button
@@ -210,8 +222,7 @@ extension AuthView {
         SignInWithAppleButton(
             onRequest: { request in
                 viewModel.prepareAppleRequest(request)
-            },
-            onCompletion: { result in
+            }, onCompletion: { result in
                 if case .success(let authorization) = result {
                     Task { await viewModel.handleAppleCredential(authorization) }
                 } else if case .failure(let error) = result {

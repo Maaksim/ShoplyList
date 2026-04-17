@@ -23,11 +23,8 @@ struct ProfileView: View {
                 contentView
             }
         }
-        .confirmationDialog(
-            "Sign out of your account?",
-            isPresented: $viewModel.showSignOutConfirmation,
-            titleVisibility: .visible
-        ) {
+        .alert("Sign out of your account?",
+               isPresented: $viewModel.showSignOutConfirmation) {
             Button("Sign Out", role: .destructive) {
                 viewModel.confirmSignOut()
             }
@@ -46,7 +43,6 @@ struct ProfileView: View {
 
 // MARK: - UI Components
 extension ProfileView {
-
     // MARK: - Background
     private var backgroundView: some View {
         LinearGradient(
