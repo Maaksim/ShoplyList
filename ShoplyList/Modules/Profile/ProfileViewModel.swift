@@ -17,12 +17,12 @@ final class ProfileViewModel {
     var showSignOutConfirmation = false
 
     var userEmail: String {
-        authService.currentUser?.email ?? "—"
+        authService.currentUserEmail ?? "—"
     }
 
-    private let authService: AuthService
+    private let authService: any AuthServiceProtocol
 
-    init(authService: AuthService) {
+    init(authService: any AuthServiceProtocol) {
         self.authService = authService
     }
 

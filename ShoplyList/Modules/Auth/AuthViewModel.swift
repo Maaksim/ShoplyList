@@ -28,9 +28,9 @@ final class AuthViewModel {
     private(set) var isLoading: Bool = false
 
     private var currentNonce: String?
-    private let authService: AuthService
+    private let authService: any AuthServiceProtocol
 
-    init(authService: AuthService) {
+    init(authService: any AuthServiceProtocol) {
         self.authService = authService
     }
 

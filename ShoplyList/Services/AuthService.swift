@@ -10,12 +10,23 @@ import FirebaseAuth
 import AuthenticationServices
 import Observation
 
+@MainActor
+protocol AuthServiceProtocol: AnyObject {
+    var isAuthenticated: Bool { get }
+    var currentUserEmail: String? { get }
+    func signIn(email: String, password: String) async throws
+    func signUp(email: String, password: String) async throws
+    func signInWithApple(idToken: String, rawNonce: String) async throws
+    func signOut() throws
+}
+
 @Observable
 @MainActor
-final class AuthService {
+final class AuthService: AuthServiceProtocol {
     private(set) var currentUser: FirebaseAuth.User?
 
     var isAuthenticated: Bool { currentUser != nil }
+    var currentUserEmail: String? { currentUser?.email }
 
     private var listenerHandle: AuthStateDidChangeListenerHandle?
 
