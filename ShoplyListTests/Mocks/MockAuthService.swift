@@ -7,6 +7,7 @@
 //
 
 @testable import ShoplyList
+import Foundation
 
 @MainActor
 final class MockAuthService: AuthServiceProtocol {
