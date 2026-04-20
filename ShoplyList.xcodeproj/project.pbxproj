@@ -15,6 +15,7 @@
 		CED020952F892DAB004C6715 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CED020942F892DAB004C6715 /* FirebaseDatabase */; };
 		CED020972F892DAB004C6715 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CED020962F892DAB004C6715 /* FirebaseFirestore */; };
 		CED020992F892DAB004C6715 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CED020982F892DAB004C6715 /* FirebaseFirestoreCombine-Community */; };
+		CED0214E2F893F9A004C6715 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CED0214D2F893F9A004C6715 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 				CED020992F892DAB004C6715 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				CED0208D2F892DAB004C6715 /* FirebaseAnalytics in Frameworks */,
 				CED0208F2F892DAB004C6715 /* FirebaseAnalyticsCore in Frameworks */,
+				CED0214E2F893F9A004C6715 /* FirebaseAuth in Frameworks */,
 				CED020932F892DAB004C6715 /* FirebaseCrashlytics in Frameworks */,
 				CED020912F892DAB004C6715 /* FirebaseCore in Frameworks */,
 				CE61EC042F2B9D24001A3CDC /* Coordinator in Frameworks */,
@@ -126,6 +128,7 @@
 				CE61D9072F29196F001A3CDC /* ShoplyList */,
 				CE61D9172F291970001A3CDC /* ShoplyListTests */,
 				CE61D9212F291971001A3CDC /* ShoplyListUITests */,
+				CED0214C2F893F9A004C6715 /* Frameworks */,
 				CE61D9062F29196F001A3CDC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -138,6 +141,13 @@
 				CE61D91E2F291971001A3CDC /* ShoplyListUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CED0214C2F893F9A004C6715 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +178,7 @@
 				CED020942F892DAB004C6715 /* FirebaseDatabase */,
 				CED020962F892DAB004C6715 /* FirebaseFirestore */,
 				CED020982F892DAB004C6715 /* FirebaseFirestoreCombine-Community */,
+				CED0214D2F893F9A004C6715 /* FirebaseAuth */,
 			);
 			productName = ShoplyList;
 			productReference = CE61D9052F29196F001A3CDC /* ShoplyList.app */;
@@ -693,6 +704,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CED0208B2F892DAB004C6715 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreCombine-Community";
+		};
+		CED0214D2F893F9A004C6715 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CED0208B2F892DAB004C6715 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,23 +12,28 @@ import Coordinator
 final class TabBarCoordinator: CompositionCoordinator {
     var childCoordinators = [any Coordinator]()
     var finishDelegate: (any CoordinatorFinishDelegate)?
-    
+
     let listTabCoordinator = ListsCoordinator()
-    let profileTabCoordinator = ListsCoordinator()
+    let authService: AuthService
 
     var activeTab = TabItem.listsTab
+
+    init(authService: AuthService) {
+        self.authService = authService
+    }
 
     var rootView: some View {
         TabBarView(coordinator: self)
     }
 
     @MainActor
+    @ViewBuilder
     func tabView(for tab: TabItem) -> some View {
         switch tab {
         case .listsTab:
             listTabCoordinator.rootView
         case .profileTab:
-            profileTabCoordinator.rootView
+            ProfileAssembly().make(authService: authService)
         }
     }
     

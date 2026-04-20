@@ -19,7 +19,6 @@ final class AllListsViewModel {
     private let repository: ProductsListRepository
 
     // MARK: - Initialization
-
     init(
         coordinator: ListsCoordinator,
         repository: ProductsListRepository = ProductsListRepository()
